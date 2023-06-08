@@ -1,4 +1,12 @@
 add_executable(main main.cpp)
+target_link_libraries(main
+  casadi_integrator_cvodes
+  casadi_integrator_idas
+  casadi_nlpsol_ipopt
+  casadi_integrator_rk
+  casadi_nlpsol_scpgen)
+
+
 target_link_libraries(main casadi)
 
 

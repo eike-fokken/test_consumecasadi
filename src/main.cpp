@@ -23,12 +23,24 @@
 
 using namespace casadi;
 
+// Declare solvers to be loaded manually
+extern "C" void casadi_load_integrator_cvodes();
+extern "C" void casadi_load_integrator_idas();
+extern "C" void casadi_load_integrator_rk();
+extern "C" void casadi_load_nlpsol_ipopt();
+extern "C" void casadi_load_nlpsol_scpgen();
+
 bool sundials_integrator = true;
 bool explicit_integrator = false;
 bool lifted_newton = false;
 
 int main(){
   // Load integrators manually
+  casadi_load_integrator_cvodes();
+  casadi_load_integrator_idas();
+  casadi_load_integrator_rk();
+  casadi_load_nlpsol_ipopt();
+  casadi_load_nlpsol_scpgen();
 
   // Time length
   double T = 10.0;
